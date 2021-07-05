@@ -42,7 +42,9 @@ public class SearchTests extends TestBase {
     step("Open main page", () ->
         open(""));
 
-    $(".popup-city-accept .popup__close ").click();
+    step("Закрыть попап выбора города", (step) -> {
+      $(".popup-city-accept .popup__close ").click();
+    });
     step("Поиск по строке {searchedValue}", (step) -> {
       String searchedValue = "матрас";
       $(".header-sub .search [name='q']").setValue(searchedValue);

@@ -1,12 +1,12 @@
 package cloud.autotests.helpers;
 
 import cloud.autotests.config.Project;
+import cloud.autotests.config.planetazdorovo.App;
 import com.codeborne.selenide.Configuration;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
-
 import java.util.HashMap;
 import java.util.Map;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class DriverSettings {
 
@@ -14,7 +14,7 @@ public class DriverSettings {
         Configuration.browser = Project.config.browser();
         Configuration.browserVersion = Project.config.browserVersion();
         Configuration.browserSize = Project.config.browserSize();
-
+        System.out.println("+++++++++webUrl=" + App.config.webUrl());
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
         if (Project.isWebMobile()) { // for chrome only
