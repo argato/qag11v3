@@ -33,6 +33,7 @@ public class SearchTests extends TestBase {
   static void configureBaseUrl() {
     RestAssured.baseURI = App.config.apiUrl();
     Configuration.baseUrl = App.config.webUrl();
+    System.out.println("bu=" + Configuration.baseUrl);
   }
 
   @Test
