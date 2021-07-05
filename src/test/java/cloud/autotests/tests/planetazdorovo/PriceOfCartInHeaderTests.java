@@ -40,13 +40,18 @@ public class PriceOfCartInHeaderTests extends TestBase {
   @Severity(SeverityLevel.NORMAL)
   void showingPriceTest() {
     String expectedItemName = "Льняное масло 250мл царевщино";
-    popUpHelper.popupCityClose();
+
+    step("Закрыть попап выбора города", (step) -> {
+      popUpHelper.popupCityClose();
+    });
+
     step("Выполнить поиск", (step) -> {
       $(".header-sub .search [name='q']").setValue("Льняное масло 250мл царевщино");
       $(".header-sub .search button.icon-search").click();
       $$(".card-list__element").shouldHave(CollectionCondition.sizeGreaterThan(0));
 
     });
+
     step("Добавить в корзину один товар из результатов поиска", (step) -> {
       SelenideElement resultItem = $$(".product-card")
           .findBy(Condition.text(expectedItemName))
@@ -54,6 +59,7 @@ public class PriceOfCartInHeaderTests extends TestBase {
 
       resultItem.$(".service_btn_buy_main:not(.q1)").click();
     });
+
     step("Проверить, что в корзине в хедере верно указана стоимость товара", (step) -> {
       $(".search span.header-basket-price").shouldHave(Condition.text("от 82 ₽"));
     });
@@ -63,13 +69,18 @@ public class PriceOfCartInHeaderTests extends TestBase {
   @DisplayName("Отображение стоимости при добавлении двух единиц одного товара")
   @Severity(SeverityLevel.NORMAL)
   void showingPriceTwoItemsTest() {
-    popUpHelper.popupCityClose();
     String expectedItemName = "Льняное масло 250мл царевщино";
+
+    step("Закрыть попап выбора города", (step) -> {
+      popUpHelper.popupCityClose();
+    });
+
     step("Выполнить поиск", (step) -> {
       $(".header-sub .search [name='q']").setValue("Льняное масло 250мл царевщино");
       $(".header-sub .search button.icon-search").click();
       $$(".card-list__element").shouldHave(CollectionCondition.sizeGreaterThan(0));
     });
+
     step("Добавить в корзину 2 единицы товара", (step) -> {
       SelenideElement resultItem = $$(".product-card")
           .findBy(Condition.text(expectedItemName))
@@ -77,6 +88,7 @@ public class PriceOfCartInHeaderTests extends TestBase {
       resultItem.$(".service_btn_buy_main:not(.q1)").click();
       resultItem.$("div.product-card__content > .product-card__action .btn-product_add").click();
     });
+
     step("Проверить, что в корзине в хедере стоимость указана за две единицы товара", (step) -> {
       $(".search span.header-basket-price").shouldHave(Condition.text("от 164 ₽"));
     });

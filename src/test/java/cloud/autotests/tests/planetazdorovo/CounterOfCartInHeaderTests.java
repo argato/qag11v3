@@ -40,8 +40,12 @@ public class CounterOfCartInHeaderTests extends TestBase {
   @Severity(SeverityLevel.NORMAL)
   void showingCounterTest() {
     String expectedItemName = "Льняное масло 250мл царевщино";
-    step("Выполнить поиск", (step) -> {
+
+    step("Закрыть попап выбора города", (step) -> {
       popUpHelper.popupCityClose();
+    });
+
+    step("Выполнить поиск", (step) -> {
       $(".header-sub .search [name='q']").setValue("Льняное масло 250мл царевщино");
       $(".header-sub .search button.icon-search").click();
       $$(".card-list__element").shouldHave(CollectionCondition.sizeGreaterThan(0));
@@ -63,12 +67,17 @@ public class CounterOfCartInHeaderTests extends TestBase {
   @Severity(SeverityLevel.NORMAL)
   void showingCounterTwoItemsTest() {
     String expectedItemName = "Льняное масло 250мл царевщино";
-    popUpHelper.popupCityClose();
+
+    step("Закрыть попап выбора города", (step) -> {
+      popUpHelper.popupCityClose();
+    });
+
     step("Выполнить поиск", (step) -> {
       $(".header-sub .search [name='q']").setValue("Льняное масло 250мл царевщино");
       $(".header-sub .search button.icon-search").click();
       $$(".card-list__element").shouldHave(CollectionCondition.sizeGreaterThan(0));
     });
+
     step("Добавить в корзину две единицы одного товара из результатов поиска", (step) -> {
       SelenideElement resultItem = $$(".product-card")
           .findBy(Condition.text(expectedItemName))
@@ -78,6 +87,7 @@ public class CounterOfCartInHeaderTests extends TestBase {
       $(".search span.icon__count_pump").shouldHave(Condition.text("1"));
       resultItem.$("div.product-card__content > .product-card__action .btn-product_add").click();
     });
+
     step("Проверить, что счетчик корзины отображается и равен единице", (step) -> {
       $(".search span.icon__count_pump").shouldHave(Condition.text("1"));
     });
@@ -88,14 +98,19 @@ public class CounterOfCartInHeaderTests extends TestBase {
   @Severity(SeverityLevel.NORMAL)
   void buyOneClickShowingCounterTest() {
 
-    popUpHelper.popupCityClose();
     String expectedItemName = "Льняное масло 250мл царевщино";
+
+    step("Закрыть попап выбора города", (step) -> {
+      popUpHelper.popupCityClose();
+    });
+
     step("Выполнить поиск", (step) -> {
 
       $(".header-sub .search [name='q']").setValue("Льняное масло 250мл царевщино");
       $(".header-sub .search button.icon-search").click();
       $$(".card-list__element").shouldHave(CollectionCondition.sizeGreaterThan(0));
     });
+
     step("Нажать \"Купить в один клик\" на одном из результатов поиска", (step) -> {
       SelenideElement resultItem = $$(".product-card")
           .findBy(Condition.text(expectedItemName))
