@@ -41,7 +41,7 @@ public class SearchTests extends TestBase {
   @Severity(SeverityLevel.CRITICAL)
   void validStringSearchTest() {
     step("Open main page", () ->
-        open("https://planetazdorovo.ru"));
+        open(Configuration.baseUrl));
 
     step("Закрыть попап выбора города", (step) -> {
       $(".popup-city-accept .popup__close ").click();

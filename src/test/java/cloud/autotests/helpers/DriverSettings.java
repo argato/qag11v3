@@ -35,7 +35,6 @@ public class DriverSettings {
             String password = Project.config.remoteDriverPassword();
             Configuration.remote = String.format("https://%s:%s@%s/wd/hub", user, password,
                                                  Project.config.remoteDriverUrl());
-            Configuration.remote = Project.config.remoteDriverUrl();
         }
 
         Configuration.browserCapabilities = capabilities;
