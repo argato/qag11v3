@@ -15,6 +15,9 @@ public class DriverSettings {
         Configuration.browserVersion = Project.config.browserVersion();
         Configuration.browserSize = Project.config.browserSize();
         System.out.println("+++++++++webUrl=" + App.config.webUrl());
+        System.out.println("+++++++++Configuration.baseUrl=" + Configuration.baseUrl);
+        System.out.println("+++++++++Configuration.browserVersion=" + Configuration.browserVersion);
+        System.out.println("+++++++++Configuration.remote=" + Configuration.remote);
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
         if (Project.isWebMobile()) { // for chrome only
