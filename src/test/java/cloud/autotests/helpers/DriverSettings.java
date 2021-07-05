@@ -29,9 +29,12 @@ public class DriverSettings {
         }
 
         if (Project.isRemoteWebDriver()) {
-            System.out.println("--------------- remote --------------");
             capabilities.setCapability("enableVNC", true);
             capabilities.setCapability("enableVideo", true);
+            String user = Project.config.remoteDriverUser();
+            String password = Project.config.remoteDriverPassword();
+            Configuration.remote = String.format("https://%s:%s@%s/wd/hub", user, password,
+                                                 Project.config.remoteDriverUrl());
             Configuration.remote = Project.config.remoteDriverUrl();
         }
 

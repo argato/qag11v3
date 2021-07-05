@@ -28,6 +28,12 @@ public interface ProjectConfig extends Config {
     @Key("remoteDriverUrl")
     String remoteDriverUrl();
 
+    @Key("remoteDriverUser")
+    String remoteDriverUser();
+
+    @Key("remoteDriverPassword")
+    String remoteDriverPassword();
+
     @Key("videoStorage")
     String videoStorage();
 }
