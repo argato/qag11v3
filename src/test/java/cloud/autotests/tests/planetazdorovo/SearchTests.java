@@ -6,6 +6,7 @@ import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 
 import cloud.autotests.config.planetazdorovo.App;
+import cloud.autotests.helpers.PopUpHelper;
 import cloud.autotests.tests.TestBase;
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Configuration;
@@ -27,13 +28,12 @@ import org.junit.jupiter.api.Test;
 @Tags({@Tag("smoke"), @Tag("planetazdorovo")})
 public class SearchTests extends TestBase {
 
-  //todo PopUpHelper popUpHelper = new PopUpHelper();
+  PopUpHelper popUpHelper = new PopUpHelper();
 
   @BeforeAll
   static void configureBaseUrl() {
     RestAssured.baseURI = App.config.apiUrl();
     Configuration.baseUrl = App.config.webUrl();
-    System.out.println("bu=" + Configuration.baseUrl);
   }
 
   @Test
@@ -44,13 +44,15 @@ public class SearchTests extends TestBase {
         open(Configuration.baseUrl));
 
     step("Закрыть попап выбора города", (step) -> {
-      $(".popup-city-accept .popup__close ").click();
+      popUpHelper.popupCityClose();
     });
+
     step("Поиск по строке {searchedValue}", (step) -> {
       String searchedValue = "матрас";
       $(".header-sub .search [name='q']").setValue(searchedValue);
       $(".header-sub .search button.icon-search").click();
     });
+
     step("Проверка наличия результатов поиска", (step) -> {
       $$(".card-list__element").shouldHave(CollectionCondition.sizeGreaterThan(0));
     });
