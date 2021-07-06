@@ -8,6 +8,8 @@ import static io.qameta.allure.Allure.step;
 import allure.AutoMember;
 import allure.Layer;
 import allure.ManualMember;
+import allure.Microservice;
+import allure.TM4J;
 import cloud.autotests.helpers.PopUpHelper;
 import cloud.autotests.tests.TestBase;
 import com.codeborne.selenide.CollectionCondition;
@@ -29,6 +31,7 @@ import org.junit.jupiter.api.Test;
 @Feature("Корзина")
 @Story("Отображение стоимости в корзине в хедере")
 @Layer("web")
+@Microservice("cart")
 @Owner("anovikova")
 @AutoMember("anovikova")
 @ManualMember("asidorov")
@@ -44,6 +47,7 @@ public class PriceOfCartInHeaderTests extends TestBase {
 
   @Test
   @DisplayName("Отображение счетчика при добавлении первого товара")
+  @TM4J("PZ-T2")
   @Severity(SeverityLevel.NORMAL)
   void showingPriceTest() {
     String expectedItemName = "Льняное масло 250мл царевщино";
@@ -74,6 +78,7 @@ public class PriceOfCartInHeaderTests extends TestBase {
 
   @Test
   @DisplayName("Отображение стоимости при добавлении двух единиц одного товара")
+  @TM4J("PZ-T3")
   @Severity(SeverityLevel.NORMAL)
   void showingPriceTwoItemsTest() {
     String expectedItemName = "Льняное масло 250мл царевщино";

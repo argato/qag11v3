@@ -8,6 +8,8 @@ import static io.qameta.allure.Allure.step;
 import allure.AutoMember;
 import allure.Layer;
 import allure.ManualMember;
+import allure.Microservice;
+import allure.TM4J;
 import cloud.autotests.helpers.PopUpHelper;
 import cloud.autotests.tests.TestBase;
 import com.codeborne.selenide.CollectionCondition;
@@ -28,7 +30,9 @@ import org.junit.jupiter.api.Test;
 @Feature("Корзина")
 @Story("Отображение счетчика корзины в хедере")
 @Layer("web")
+@Microservice("cart")
 @Owner("anovikova")
+@TM4J("PZ-T4")
 @Tags({@Tag("smoke"), @Tag("planetazdorovo")})
 public class CounterOfCartInHeaderTests extends TestBase {
 

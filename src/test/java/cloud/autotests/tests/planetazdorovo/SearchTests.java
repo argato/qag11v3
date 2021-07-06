@@ -8,6 +8,8 @@ import static io.qameta.allure.Allure.step;
 import allure.AutoMember;
 import allure.Layer;
 import allure.ManualMember;
+import allure.Microservice;
+import allure.TM4J;
 import cloud.autotests.helpers.PopUpHelper;
 import cloud.autotests.tests.TestBase;
 import com.codeborne.selenide.CollectionCondition;
@@ -26,6 +28,7 @@ import org.junit.jupiter.api.Test;
 @Feature("Поиск")
 @Story("Поиск валидных значений")
 @Layer("web")
+@Microservice("search")
 @Owner("anovikova")
 @Tags({@Tag("smoke"), @Tag("regress"), @Tag("planetazdorovo")})
 public class SearchTests extends TestBase {
@@ -39,6 +42,7 @@ public class SearchTests extends TestBase {
 
   @Test
   @DisplayName("Строка в нижнем регистре")
+  @TM4J("PZ-T1")
   @AutoMember("anovikova")
   @ManualMember("divanov")
   @Severity(SeverityLevel.CRITICAL)

@@ -6,8 +6,12 @@ import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 
 import allure.AutoMember;
+import allure.JiraIssue;
+import allure.JiraIssues;
 import allure.Layer;
 import allure.ManualMember;
+import allure.Microservice;
+import allure.TM4J;
 import cloud.autotests.helpers.PopUpHelper;
 import cloud.autotests.tests.TestBase;
 import com.codeborne.selenide.CollectionCondition;
@@ -28,7 +32,8 @@ import org.junit.jupiter.api.Test;
 @Feature("Корзина")
 @Story("Переход в корзину")
 @Layer("web")
-@Owner("arina_ng")
+@Microservice("cart")
+@Owner("anovikova")
 @Tags({@Tag("smoke"), @Tag("planetazdorovo")})
 public class GoToCart extends TestBase {
 
@@ -41,6 +46,8 @@ public class GoToCart extends TestBase {
 
   @Test
   @DisplayName("Переход в корзину при нажатии \"Купить в один клик.\"")
+  @TM4J("PZ-T55")
+  @JiraIssues({@JiraIssue("PZ-11")})
   @AutoMember("anovikova")
   @ManualMember("asidorov")
   @Severity(SeverityLevel.NORMAL)
