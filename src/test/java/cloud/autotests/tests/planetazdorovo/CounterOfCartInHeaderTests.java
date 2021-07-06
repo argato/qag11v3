@@ -5,6 +5,9 @@ import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 
+import allure.AutoMember;
+import allure.Layer;
+import allure.ManualMember;
 import cloud.autotests.helpers.PopUpHelper;
 import cloud.autotests.tests.TestBase;
 import com.codeborne.selenide.CollectionCondition;
@@ -22,9 +25,10 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 
-@Owner("arina_ng")
 @Feature("Корзина")
 @Story("Отображение счетчика корзины в хедере")
+@Layer("web")
+@Owner("anovikova")
 @Tags({@Tag("smoke"), @Tag("planetazdorovo")})
 public class CounterOfCartInHeaderTests extends TestBase {
 
@@ -37,6 +41,8 @@ public class CounterOfCartInHeaderTests extends TestBase {
 
   @Test
   @DisplayName("Отображение счетчика при добавлении первого товара")
+  @AutoMember("anovikova")
+  @ManualMember("ipetrov")
   @Severity(SeverityLevel.NORMAL)
   void showingCounterTest() {
     String expectedItemName = "Льняное масло 250мл царевщино";
@@ -64,6 +70,8 @@ public class CounterOfCartInHeaderTests extends TestBase {
 
   @Test
   @DisplayName("Отображение счетчика при добавлении двух единиц одного товара")
+  @AutoMember("anovikova")
+  @ManualMember("ipetrov")
   @Severity(SeverityLevel.NORMAL)
   void showingCounterTwoItemsTest() {
     String expectedItemName = "Льняное масло 250мл царевщино";
@@ -95,6 +103,8 @@ public class CounterOfCartInHeaderTests extends TestBase {
 
   @Test
   @DisplayName("Отображение счетчика, при нажатии \"Купить в один клик\".")
+  @AutoMember("anovikova")
+  @ManualMember("ipetrov")
   @Severity(SeverityLevel.NORMAL)
   void buyOneClickShowingCounterTest() {
 

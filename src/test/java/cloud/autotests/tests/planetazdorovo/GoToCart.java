@@ -5,6 +5,9 @@ import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 
+import allure.AutoMember;
+import allure.Layer;
+import allure.ManualMember;
 import cloud.autotests.helpers.PopUpHelper;
 import cloud.autotests.tests.TestBase;
 import com.codeborne.selenide.CollectionCondition;
@@ -22,9 +25,10 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 
-@Owner("arina_ng")
 @Feature("Корзина")
 @Story("Переход в корзину")
+@Layer("web")
+@Owner("arina_ng")
 @Tags({@Tag("smoke"), @Tag("planetazdorovo")})
 public class GoToCart extends TestBase {
 
@@ -37,6 +41,8 @@ public class GoToCart extends TestBase {
 
   @Test
   @DisplayName("Переход в корзину при нажатии \"Купить в один клик.\"")
+  @AutoMember("anovikova")
+  @ManualMember("asidorov")
   @Severity(SeverityLevel.NORMAL)
   void buyOneClickGoToCartTest() {
     String expectedItemName = "Льняное масло 250мл царевщино";

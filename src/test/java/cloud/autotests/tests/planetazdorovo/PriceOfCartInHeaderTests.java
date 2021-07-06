@@ -5,6 +5,9 @@ import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 
+import allure.AutoMember;
+import allure.Layer;
+import allure.ManualMember;
 import cloud.autotests.helpers.PopUpHelper;
 import cloud.autotests.tests.TestBase;
 import com.codeborne.selenide.CollectionCondition;
@@ -22,9 +25,13 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 
-@Owner("arina_ng")
+
 @Feature("Корзина")
 @Story("Отображение стоимости в корзине в хедере")
+@Layer("web")
+@Owner("anovikova")
+@AutoMember("anovikova")
+@ManualMember("asidorov")
 @Tags({@Tag("smoke"), @Tag("planetazdorovo")})
 public class PriceOfCartInHeaderTests extends TestBase {
 

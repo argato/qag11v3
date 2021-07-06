@@ -5,6 +5,9 @@ import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 
+import allure.AutoMember;
+import allure.Layer;
+import allure.ManualMember;
 import cloud.autotests.helpers.PopUpHelper;
 import cloud.autotests.tests.TestBase;
 import com.codeborne.selenide.CollectionCondition;
@@ -20,10 +23,11 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 
-@Owner("arina_ng")
 @Feature("Поиск")
 @Story("Поиск валидных значений")
-@Tags({@Tag("smoke"), @Tag("planetazdorovo")})
+@Layer("web")
+@Owner("anovikova")
+@Tags({@Tag("smoke"), @Tag("regress"), @Tag("planetazdorovo")})
 public class SearchTests extends TestBase {
 
   PopUpHelper popUpHelper = new PopUpHelper();
@@ -35,6 +39,8 @@ public class SearchTests extends TestBase {
 
   @Test
   @DisplayName("Строка в нижнем регистре")
+  @AutoMember("anovikova")
+  @ManualMember("divanov")
   @Severity(SeverityLevel.CRITICAL)
   void validStringSearchTest() {
     step("Закрыть попап выбора города", (step) -> {
